@@ -11,7 +11,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class Ventana extends JFrame{
-		private JPanel panel;
+		private JPanel panel, registro;
 		private JTextField cajaTexto;
 		private JPasswordField cajaContrasena;
 		public Ventana() {
@@ -27,6 +27,7 @@ public class Ventana extends JFrame{
 		}
 		private void activarComponentes() {
 			panelComponentes();
+			panelRegistro();
 			String dato;
 			int x,y,h,w;
 			etiquetaDeTexto(dato="SISTEMA P.A.C.S.",250,30,200,30);
@@ -42,6 +43,25 @@ public class Ventana extends JFrame{
 			//panel.setBackground(Color.WHITE);
 			panel.setLayout(null);
 			this.getContentPane().add(panel);
+			registro = new JPanel();
+			registro.setSize(this.getWidth()/2, this.getHeight());
+			registro.setLocation(this.getWidth()/2,0);
+			registro.setBackground(Color.BLACK);
+			registro.setLayout(null);
+			this.getContentPane().add(registro);
+			
+			//JLabel etiqueta = new JLabel();
+			//etiqueta.setText("SISTEMA P.A.C.S.");
+			//panel.add(etiqueta);
+		}
+		private void panelRegistro() {
+			registro = new JPanel();
+			registro.setSize(this.getWidth()/2, this.getHeight());
+			registro.setLocation(this.getWidth()/2,0);
+			registro.setBackground(Color.WHITE);
+			registro.setLayout(null);
+			this.getContentPane().add(registro);
+			
 			
 			//JLabel etiqueta = new JLabel();
 			//etiqueta.setText("SISTEMA P.A.C.S.");
