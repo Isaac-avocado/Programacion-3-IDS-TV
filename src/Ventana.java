@@ -11,7 +11,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class Ventana extends JFrame{
-		private JPanel panel, registro;
+		private JPanel panel, registro, login;
 		private JTextField cajaTexto;
 		private JPasswordField cajaContrasena;
 		public Ventana() {
@@ -30,25 +30,29 @@ public class Ventana extends JFrame{
 			panelRegistro();
 			String dato;
 			int x,y,h,w;
-			etiquetaDeTexto(dato="SISTEMA P.A.C.S.",250,30,200,30);
-			etiquetaDeTexto(dato="Token",280,100,200,30);
-			etiquetaDeTexto(dato="Contraseña",265,200,200,30);
+			etiquetaDeTexto(dato="SISTEMA P.A.C.S.",125,30,200,30, login);
+			etiquetaDeTexto(dato="Token",140,100,200,30, login);
+			etiquetaDeTexto(dato="Contraseña",132,200,200,30, login);
 			botonAccion();
 			cajaDeTexto();
 			cajaDeContrasena();
+			
+			this.revalidate();
+			this.repaint();
 			
 		}
 		private void panelComponentes() {
 			panel = new JPanel();
 			//panel.setBackground(Color.WHITE);
 			panel.setLayout(null);
-			this.getContentPane().add(panel);
-			registro = new JPanel();
-			registro.setSize(this.getWidth()/2, this.getHeight());
-			registro.setLocation(this.getWidth()/2,0);
-			registro.setBackground(Color.BLACK);
-			registro.setLayout(null);
-			this.getContentPane().add(registro);
+			this.add(panel);
+			
+			login = new JPanel();
+			login.setSize(this.getWidth()/2, this.getHeight());
+			login.setLocation(0,0);
+			login.setBackground(Color.GRAY);
+			login.setLayout(null);
+			panel.add(login);
 			
 			//JLabel etiqueta = new JLabel();
 			//etiqueta.setText("SISTEMA P.A.C.S.");
@@ -60,14 +64,14 @@ public class Ventana extends JFrame{
 			registro.setLocation(this.getWidth()/2,0);
 			registro.setBackground(Color.WHITE);
 			registro.setLayout(null);
-			this.getContentPane().add(registro);
+			panel.add(registro);
 			
 			
 			//JLabel etiqueta = new JLabel();
 			//etiqueta.setText("SISTEMA P.A.C.S.");
 			//panel.add(etiqueta);
 		}
-		private void etiquetaDeTexto(String dato,int x,int y, int h,int w) {
+		private void etiquetaDeTexto(String dato,int x,int y, int h,int w, JPanel panel) {
 			JLabel etiqueta = new JLabel();
 			etiqueta.setText(dato);
 			etiqueta.setBounds(x,y,h,w);
@@ -75,20 +79,20 @@ public class Ventana extends JFrame{
 		}
 		private void cajaDeTexto() {
 			JTextField cajaTexto = new JTextField();
-			cajaTexto.setBounds(200,130,200,30);
+			cajaTexto.setBounds(100,130,200,30);
 			//cajaTexto.setText("Hola.");
-			panel.add(cajaTexto);
+			login.add(cajaTexto);
 		}
 		private void cajaDeContrasena() {
 			JPasswordField cajaContrasena = new JPasswordField();
-			cajaContrasena.setBounds(200,230,200,30);
-			panel.add(cajaContrasena);
+			cajaContrasena.setBounds(100,230,200,30);
+			login.add(cajaContrasena);
 		}
 		private void botonAccion() {
 			JButton boton = new JButton("ENTRAR");
-			boton.setBounds(250,300,100,30);
+			boton.setBounds(125,300,100,30);
 			//boton.addActionListener((ActionListener) this);
-			panel.add(boton);
+			login.add(boton);
 		}
 		@SuppressWarnings("unused")
 		private void actionPerformed(ActionEvent accion) {
