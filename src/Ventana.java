@@ -12,8 +12,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class Ventana extends JFrame {
-    private JPanel panel, registro, login;
-    private JTextField cajaTexto;
+    private JPanel panel, registro, login, calculadora;
+    private JTextField cajaTexto,resultado;
     private JPasswordField cajaContrasena;
     private JTextArea areaTexto;
     private JComboBox<String> menuDesplegable;
@@ -33,16 +33,17 @@ public class Ventana extends JFrame {
     private void activarComponentes() {
         panelComponentes();
         panelRegistro();
+        panelCalculadora();
         String dato;
         etiquetaDeTexto(dato = "SISTEMA P.A.C.S.", 110, 30, 200, 30, login);
         etiquetaDeTexto(dato = "Token", 140, 100, 200, 30, login);
         etiquetaDeTexto(dato = "Contraseña", 130, 200, 200, 30, login);
         etiquetaDeTexto(dato = "SISTEMA P.A.C.S.", 110, 30, 200, 30, registro);
         etiquetaDeTexto(dato = "Nombre", 140, 100, 200, 30, registro);
-        // Agregar elementos adicionales al panel de registro
+
         cajaDeTexto(dato = "Ingrese su nombre...", 60, 150, 200, 30, registro);
         checkBoxes(60, 200, 20, 100, registro);
-        areaDeTexto(dato = "Ingrese su párrafo...", 60, 420, 200, 100, registro);
+        areaDeTexto(dato = "Ingrese su párrafo...", 60, 442, 200, 100, registro);
         menuDesplegable(60, 600, 200, 30, registro);
         botonGuardar(110, 700, 100, 30, registro);
 
@@ -74,6 +75,38 @@ public class Ventana extends JFrame {
         registro.setBackground(Color.LIGHT_GRAY);
         registro.setLayout(null);
         panel.add(registro);
+    }
+
+    private void panelCalculadora() {
+        calculadora = new JPanel();
+        calculadora.setSize(this.getWidth(), 200);
+        calculadora.setLocation(0, this.getHeight() - 200);
+        calculadora.setBackground(Color.WHITE);
+        calculadora.setLayout(null);
+        panel.add(calculadora);
+
+        resultado = new JTextField();
+        resultado.setBounds(10, 10, calculadora.getWidth() - 20, 40);
+        calculadora.add(resultado);
+
+        String[] labels = { "CE", "", "", "",
+                            "7", "8", "9", "/",
+                            "4", "5", "6", "*",
+                            "1", "2", "3", "-",
+                            "0", ".", "=", "+" };
+        int rows = 5;
+        int cols = 4;
+        int buttonWidth = (calculadora.getWidth() - 50) / cols;
+        int buttonHeight = (calculadora.getHeight() - 100) / rows;
+        int startX = 10;
+        int startY = 60;
+        for (int i = 0; i < labels.length; i++) {
+            int row = i / cols;
+            int col = i % cols;
+            JButton button = new JButton(labels[i]);
+            button.setBounds(startX + col * (buttonWidth + 10), startY + row * (buttonHeight + 10), buttonWidth, buttonHeight);
+            calculadora.add(button);
+        }
     }
 
     private void etiquetaDeTexto(String dato, int x, int y, int h, int w, JPanel panel) {
