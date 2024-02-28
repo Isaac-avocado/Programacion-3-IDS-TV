@@ -1,148 +1,126 @@
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class Ventana extends JFrame{
-		private JPanel panel, registro, login;
-		private JTextField cajaTexto;
-		private JPasswordField cajaContrasena;
-		private GridBagConstraints gridBagConstraints = new GridBagConstraints();
-		public Ventana() {
-			setVisible(true);
-			setTitle("Login window");
-			setSize(600,600);
-			setMinimumSize(new Dimension (600, 600));
-			setMaximumSize(new Dimension (600, 600));
-			setLocationRelativeTo(null);
-			setDefaultCloseOperation(EXIT_ON_CLOSE);
-			getContentPane().setBackground(Color.LIGHT_GRAY);
-			activarComponentes();
-		}
-		private void activarComponentes() {
-			panelComponentes();
-			panelLogin();
-			panelRegistro();
-			String dato;
-			int x,y,h,w;
-			etiquetaDeTexto(dato="SISTEMA P.A.C.S.",125,30,200,30, login,1,0);
-			etiquetaDeTexto(dato="Token",140,100,200,30, login,2,0);
-			etiquetaDeTexto(dato="Contraseña",132,200,200,30, login,3,0);
-			
-			botonAccion(4);
-			cajaDeTexto(2);
-			cajaDeContrasena(3);
-			
-			this.revalidate();
-			this.repaint();
-			
-		}
-		private void panelComponentes() {
-			panel = new JPanel();
-			panel.setBackground(Color.BLACK);
-			//panel.setBackground(Color.WHITE);
-			panel.setLayout(new GridBagLayout());
-			this.add(panel);
-			
-		}
-		private void panelLogin() {
-			login = new JPanel();
-			//login.setSize(this.getWidth()/2, this.getHeight());
-			//login.setLocation(0,0);
-			login.setBackground(Color.GRAY);
-			login.setLayout(new GridBagLayout());
-			gridBagConstraints.gridx = 0;
-			gridBagConstraints.gridx = 1;
-			gridBagConstraints.fill = GridBagConstraints.BOTH;
-			//panel.add((login), gridBagConstraints);
-			panel.add(login);
-			//JLabel etiqueta = new JLabel();
-			//etiqueta.setText("SISTEMA P.A.C.S.");
-			//panel.add(etiqueta);
-		}
-		private void panelRegistro() {
-			registro = new JPanel();
-			//registro.setSize(this.getWidth()/2, this.getHeight());
-			//registro.setLocation(this.getWidth()/2,0);
-			gridBagConstraints.gridx = 1;
-			gridBagConstraints.gridx = 1;
-			registro.setBackground(Color.WHITE);
-			registro.setLayout(null);
-			panel.add((registro), gridBagConstraints);
-			
-			
-			//JLabel etiqueta = new JLabel();
-			//etiqueta.setText("SISTEMA P.A.C.S.");
-			//panel.add(etiqueta);
-		}
-		private void etiquetaDeTexto(String dato,int x,int y, int h,int w, JPanel panel, int gridY, int gridX) {
-			JLabel etiqueta = new JLabel();
-			etiqueta.setText(dato);
-			//etiqueta.setBounds(x,y,h,w);
-			//panel.setLayout(new GridBagLayout());
-			//panel.setLayout(null);
-			gridBagConstraints.fill=gridBagConstraints.HORIZONTAL;
-			gridBagConstraints.gridy = gridY;
-			gridBagConstraints.gridx = gridX;
-			gridBagConstraints.weightx = 0.4;
-			gridBagConstraints.weighty = 0;
-			
-			//gridBagConstraints.insets = new Insets(5, 5, 5, 5);
-			panel.add((etiqueta), gridBagConstraints);
-		}
-		private void cajaDeTexto(int gridNumero) {
-			JTextField cajaTexto = new JTextField();
-			//cajaTexto.setBounds(100,130,200,30);
-			//cajaTexto.setText("Hola.");
-			//panel.setLayout(new GridBagLayout());
-			//panel.setLayout(null);
-			gridBagConstraints.fill=gridBagConstraints.HORIZONTAL;
-			gridBagConstraints.gridy = gridNumero;
-			gridBagConstraints.weightx = 0.4;
-			gridBagConstraints.weighty = 0.4;
-			//gridBagConstraints.insets = new Insets(5, 5, 5, 5);
-			login.add((cajaTexto), gridBagConstraints);
-		}
-		private void cajaDeContrasena(int gridNumero) {
-			JPasswordField cajaContrasena = new JPasswordField();
-			//cajaContrasena.setBounds(100,230,200,30);
-			//panel.setLayout(new GridBagLayout());
-			//panel.setLayout(null);
-			gridBagConstraints.fill=gridBagConstraints.HORIZONTAL;
-			gridBagConstraints.gridy = gridNumero;
-			gridBagConstraints.weightx = 0.4;
-			gridBagConstraints.weighty = 0.4;
-			//gridBagConstraints.insets = new Insets(5, 5, 5, 5);
-			login.add((cajaContrasena), gridBagConstraints);
-		}
-		private void botonAccion(int gridNumero) {
-			JButton boton = new JButton("ENTRAR");
-			//boton.setBounds(125,300,100,30);
-			//boton.addActionListener((ActionListener) this);
-			panel.setLayout(new GridBagLayout());
-			//panel.setLayout(null);
-			gridBagConstraints.fill=gridBagConstraints.HORIZONTAL;
-			gridBagConstraints.anchor = GridBagConstraints.PAGE_END;
-			gridBagConstraints.gridy = gridNumero;
-			gridBagConstraints.weightx = 0.4;
-			gridBagConstraints.weighty = 0.4;
-			//gridBagConstraints.insets = new Insets(5, 5, 5, 5);
-			login.add((boton), gridBagConstraints);
-		}
-		@SuppressWarnings("unused")
-		private void actionPerformed(ActionEvent accion) {
-			String token = cajaTexto.getText();		
-			String contrasena = cajaContrasena.getText();
-			String login = "Login" + token +" - "+contrasena+"...COMPLETO.";
-		}
+public class Ventana extends JFrame {
+    private JPanel panel, registro, login;
+    private JTextField cajaTexto;
+    private JPasswordField cajaContrasena;
+    private JTextArea areaTexto;
+    private JComboBox<String> menuDesplegable;
+
+    public Ventana() {
+        setVisible(true);
+        setTitle("Login window");
+        setSize(800, 800);
+        setMinimumSize(new Dimension(800, 800));
+        setMaximumSize(new Dimension(800, 800));
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        getContentPane().setBackground(Color.LIGHT_GRAY);
+        activarComponentes();
+    }
+
+    private void activarComponentes() {
+        panelComponentes();
+        panelRegistro();
+        String dato;
+        etiquetaDeTexto(dato = "SISTEMA P.A.C.S.", 110, 30, 200, 30, login);
+        etiquetaDeTexto(dato = "Token", 140, 100, 200, 30, login);
+        etiquetaDeTexto(dato = "Contraseña", 130, 200, 200, 30, login);
+        etiquetaDeTexto(dato = "SISTEMA P.A.C.S.", 110, 30, 200, 30, registro);
+        etiquetaDeTexto(dato = "Nombre", 140, 100, 200, 30, registro);
+        // Agregar elementos adicionales al panel de registro
+        cajaDeTexto(dato = "Ingrese su nombre...", 60, 150, 200, 30, registro);
+        checkBoxes(60, 200, 20, 100, registro);
+        areaDeTexto(dato = "Ingrese su párrafo...", 60, 420, 200, 100, registro);
+        menuDesplegable(60, 600, 200, 30, registro);
+        botonGuardar(110, 700, 100, 30, registro);
+
+        cajaDeTexto(dato = "Ingrese su token...", 60, 150, 200, 30, login);
+        cajaDeContrasena(60, 250, 200, 30, login);
+
+        this.revalidate();
+        this.repaint();
+
+    }
+
+    private void panelComponentes() {
+        panel = new JPanel();
+        panel.setLayout(null);
+        this.add(panel);
+
+        login = new JPanel();
+        login.setSize(this.getWidth() / 2, this.getHeight());
+        login.setLocation(0, 0);
+        login.setBackground(Color.GRAY);
+        login.setLayout(null);
+        panel.add(login);
+    }
+
+    private void panelRegistro() {
+        registro = new JPanel();
+        registro.setSize(this.getWidth() / 2, this.getHeight());
+        registro.setLocation(this.getWidth() / 2, 0);
+        registro.setBackground(Color.LIGHT_GRAY);
+        registro.setLayout(null);
+        panel.add(registro);
+    }
+
+    private void etiquetaDeTexto(String dato, int x, int y, int h, int w, JPanel panel) {
+        JLabel etiqueta = new JLabel();
+        etiqueta.setText(dato);
+        etiqueta.setBounds(x, y, h, w);
+        panel.add(etiqueta);
+    }
+
+    private void cajaDeTexto(String dato, int x, int y, int h, int w, JPanel panel) {
+        cajaTexto = new JTextField();
+        cajaTexto.setBounds(x, y, h, w);
+        cajaTexto.setText(dato);
+        panel.add(cajaTexto);
+    }
+
+    private void cajaDeContrasena(int x, int y, int h, int w, JPanel panel) {
+        cajaContrasena = new JPasswordField();
+        cajaContrasena.setBounds(x, y, h, w);
+        panel.add(cajaContrasena);
+    }
+
+    private void areaDeTexto(String dato, int x, int y, int h, int w, JPanel panel) {
+        areaTexto = new JTextArea();
+        areaTexto.setBounds(x, y, h, w);
+        areaTexto.setText(dato);
+        panel.add(areaTexto);
+    }
+
+    private void checkBoxes(int x, int y, int h, int w, JPanel panel) {
+        for (int i = 1; i <= 4; i++) {
+            JCheckBox checkBox = new JCheckBox("Opcion " + i);
+            checkBox.setBounds(x, y + (i - 1) * 30, h, w);
+            panel.add(checkBox);
+        }
+    }
+
+    private void menuDesplegable(int x, int y, int h, int w, JPanel panel) {
+        String[] opciones = { "Opción 1", "Opción 2", "Opción 3", "Opción 4" };
+        menuDesplegable = new JComboBox<>(opciones);
+        menuDesplegable.setBounds(x, y, h, w);
+        panel.add(menuDesplegable);
+    }
+
+    private void botonGuardar(int x, int y, int h, int w, JPanel panel) {
+        JButton boton = new JButton("Guardar");
+        boton.setBounds(x, y, h, w);
+        panel.add(boton);
+    }
 }
