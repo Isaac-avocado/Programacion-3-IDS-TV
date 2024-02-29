@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -40,9 +41,9 @@ public class Ventana extends JFrame {
         String dato;
         
         
-        etiquetaDeTexto(dato = "SISTEMA P.A.C.S.", 110, 30, 200, 30, login);
+        etiquetaDeTexto(dato = "SISTEMA P.A.C.S.", 90, 30, 200, 30, login);
         etiquetaDeTexto(dato = "Token", 140, 100, 200, 30, login);
-        etiquetaDeTexto(dato = "Contraseña", 130, 200, 200, 30, login);
+        etiquetaDeTexto(dato = "Contraseña", 110, 200, 200, 30, login);
         etiquetaDeTexto(dato = "SISTEMA P.A.C.S.", 110, 30, 200, 30, registro);
         etiquetaDeTexto(dato = "Nombre", 140, 100, 200, 30, registro);
 
@@ -52,8 +53,8 @@ public class Ventana extends JFrame {
         menuDesplegable(60, 600, 200, 30, registro);
         botonGuardar(110, 700, 100, 30, registro);
 
-        cajaDeTexto(dato = "Ingrese su token...", 60, 150, 200, 30, login);
-        cajaDeContrasena(60, 250, 200, 30, login);
+        cajaDeTexto(dato = "Ingrese su token...", 80, 150, 200, 30, login);
+        cajaDeContrasena(80, 250, 200, 30, login);
         
         this.imagen(login, registro);
 
@@ -72,9 +73,44 @@ public class Ventana extends JFrame {
         login = new JPanel();
         login.setSize(this.getWidth() / 2, this.getHeight());
         login.setLocation(0, 0);
-        login.setBackground(Color.GRAY);
+        login.setBackground(Color.decode("#090983"));
         login.setLayout(null);
-        panel.add(login);
+        
+        //JLabel cuenta = new JLabel("My Account",0);
+		//cuenta.setFont(new Font("Agency FB", Font.BOLD,35));
+		//cuenta.setForeground(Color.decode("#FFDF6D"));
+		//cuenta.setBounds(0,185 , 300, 50);
+		//login.add(cuenta);
+		
+		JLabel askAcount = new JLabel("¿Cuenta sin asignar?",0);
+		askAcount.setBounds(110, 300,140, 30);
+		askAcount.setForeground(Color.WHITE);
+		askAcount.setFont(new Font("Agency FB", Font.BOLD,20));
+		login.add(askAcount);
+		
+		JButton singUp = new JButton("ASIGNAR");
+		singUp.setForeground(Color.black);
+		singUp.setFont(new Font("Agency FB", Font.BOLD,30));
+		singUp.setBackground(Color.decode("#FFDF6D"));
+		singUp.setBounds(120, 330, 120, 45);
+		login.add(singUp);
+		
+		JLabel imag = new JLabel ("");
+		imag.setIcon(new ImageIcon(getClass().getResource("hombre.png")));
+		imag.setBounds(30, 148, 35, 35 );
+		imag.setOpaque(true);
+		imag.setBackground(Color.WHITE);
+		login.add(imag);
+		
+		JLabel img2 = new JLabel ("");
+		img2.setIcon(new ImageIcon(getClass().getResource("candado.png")));
+		img2.setBounds(30, 248, 35, 35 );
+		img2.setOpaque(true);
+		img2.setBackground(Color.WHITE);
+		login.add(img2);
+		
+		panel.add(login);
+		
     }
 
     private void panelRegistro() {
@@ -121,6 +157,8 @@ public class Ventana extends JFrame {
 
     private void etiquetaDeTexto(String dato, int x, int y, int h, int w, JPanel panel) {
         JLabel etiqueta = new JLabel();
+        etiqueta.setFont(new Font("Agency FB", Font.BOLD,35));
+        etiqueta.setForeground(Color.white);
         etiqueta.setText(dato);
         etiqueta.setBounds(x, y, h, w);
         panel.add(etiqueta);
@@ -172,7 +210,7 @@ public class Ventana extends JFrame {
     	img.setIcon(new ImageIcon(getClass().getResource("cia_3.png")));
     	img.setBounds(10,10,50,50);
     	img.setOpaque(true);
-    	img.setBackground(Color.GRAY);
+    	img.setBackground(Color.decode("#090983"));
     	
     	panel.add(img); 
     	
