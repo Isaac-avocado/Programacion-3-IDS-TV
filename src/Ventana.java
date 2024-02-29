@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.Dimension;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -17,6 +18,7 @@ public class Ventana extends JFrame {
     private JPasswordField cajaContrasena;
     private JTextArea areaTexto;
     private JComboBox<String> menuDesplegable;
+    private JLabel imagen;
 
     public Ventana() {
         setVisible(true);
@@ -34,7 +36,10 @@ public class Ventana extends JFrame {
         panelComponentes();
         panelRegistro();
         panelCalculadora();
+        
         String dato;
+        
+        
         etiquetaDeTexto(dato = "SISTEMA P.A.C.S.", 110, 30, 200, 30, login);
         etiquetaDeTexto(dato = "Token", 140, 100, 200, 30, login);
         etiquetaDeTexto(dato = "Contraseña", 130, 200, 200, 30, login);
@@ -42,16 +47,20 @@ public class Ventana extends JFrame {
         etiquetaDeTexto(dato = "Nombre", 140, 100, 200, 30, registro);
 
         cajaDeTexto(dato = "Ingrese su nombre...", 60, 150, 200, 30, registro);
-        checkBoxes(60, 200, 20, 100, registro);
+        checkBoxes(60, 200, 200, 30, registro);
         areaDeTexto(dato = "Ingrese su párrafo...", 60, 442, 200, 100, registro);
         menuDesplegable(60, 600, 200, 30, registro);
         botonGuardar(110, 700, 100, 30, registro);
 
         cajaDeTexto(dato = "Ingrese su token...", 60, 150, 200, 30, login);
         cajaDeContrasena(60, 250, 200, 30, login);
+        
+        this.imagen(login, registro);
 
         this.revalidate();
         this.repaint();
+        
+        registro.repaint();
 
     }
 
@@ -86,8 +95,8 @@ public class Ventana extends JFrame {
         panel.add(calculadora);
 
         resultado = new JTextField();
-        resultado.setBounds(10, 10, calculadora.getWidth() - 20, 40);
-        calculadora.add(resultado);
+        resultado.setBounds(50,600, calculadora.getWidth() - 500, 30);
+        login.add(resultado);
 
         String[] labels = { "CE", "", "", "",
                             "7", "8", "9", "/",
@@ -96,16 +105,17 @@ public class Ventana extends JFrame {
                             "0", ".", "=", "+" };
         int rows = 5;
         int cols = 4;
-        int buttonWidth = (calculadora.getWidth() - 50) / cols;
+        int buttonWidth = (calculadora.getWidth() - 500) / cols;
         int buttonHeight = (calculadora.getHeight() - 100) / rows;
-        int startX = 10;
-        int startY = 60;
+        int startX = 50;
+        int startY = 650;
         for (int i = 0; i < labels.length; i++) {
             int row = i / cols;
             int col = i % cols;
             JButton button = new JButton(labels[i]);
-            button.setBounds(startX + col * (buttonWidth + 10), startY + row * (buttonHeight + 10), buttonWidth, buttonHeight);
-            calculadora.add(button);
+            button.setBounds(startX + col * (buttonWidth + 0), startY + row * (buttonHeight + 0), buttonWidth, buttonHeight);
+            login.add(button);
+            
         }
     }
 
@@ -155,5 +165,19 @@ public class Ventana extends JFrame {
         JButton boton = new JButton("Guardar");
         boton.setBounds(x, y, h, w);
         panel.add(boton);
+    }
+    private void imagen(JPanel panel, JPanel panel2) {
+    	
+    	JLabel img = new JLabel("");
+    	img.setIcon(new ImageIcon(getClass().getResource("cia_3.png")));
+    	img.setBounds(10,10,50,50);
+    	img.setOpaque(true);
+    	img.setBackground(Color.GRAY);
+    	
+    	panel.add(img); 
+    	
+    	panel.repaint();
+    	
+    	System.out.println("hola");
     }
 }
