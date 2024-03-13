@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.util.Random;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -24,7 +25,12 @@ class Lienzo extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        // ACTIVIDAD SOBRE DIBUJAR N01
+        
+        
+        
+        
+        
+        // ACTIVIDAD SOBRE DIBUJAR N01 ---------------------------------------------------------------------------------------------------------------------------------------------------
         //g.drawLine(50, 50, 200, 200);
         //g.drawRect(100, 100, 100, 100);
         //g.drawOval(250, 250, 100, 100);
@@ -87,8 +93,16 @@ class Lienzo extends JPanel {
         g.fillRect(50, 250, 300, 10);
         */
         
+        
+        
+        
+        
+        
+        
+        
+     // ACTIVIDAD SOBRE DIBUJAR N02 CASA -------------------------------------------------------------------------------------------------------------------------------------------------
      // Cielo
-        g.setColor(new Color(135, 206, 250)); // Azul cielo claro
+        /*g.setColor(new Color(135, 206, 250)); // Azul cielo claro
         g.fillRect(0, 0, getWidth(), getHeight());
 
         // Pasto
@@ -122,5 +136,71 @@ class Lienzo extends JPanel {
         // Ventana
         g.setColor(new Color(135, 206, 250)); // Azul cielo
         g.fillRect(120, 200, 50, 50);
+        */
+        
+        
+        
+        
+        
+        
+        
+        
+     // ACTIVIDAD SOBRE DIBUJAR N04 MARIO BROS Yoshi's Island 1 --------------------------------------------------------------------------------------------------------------------------
+        // FONDO
+        g.setColor(new Color(173, 216, 230));
+        g.fillRect(0, 0, getWidth(), getHeight());
+        
+     // Dibujar TUBERIA1
+        g.setColor(Color.GRAY);
+        //g.fillRect(250, getHeight() / 2 - 20, 80, 40);
+        g.fillRect(255, 250, 70, 300);
+        g.fillRect(250, getHeight() / 2 - 20, 80, 40);
+        g.setColor(Color.BLACK);
+        g.drawRect(250, getHeight() / 2 - 20, 80, 40);
+        g.drawRect(255, 250, 70, 300);
+        g.drawLine(300, 250, 330, 250);
+        
+     // Dibujar TUBERIA2
+        g.setColor(Color.GRAY);
+        g.fillRect(420, 280 , 80, 40);
+        g.fillRect(425, 320, 70, 300);
+        g.setColor(Color.BLACK);
+        g.drawRect(420, 280 , 80, 40);
+        g.drawRect(425, 320, 70, 300);
+        
+        for (int i = 0; i < 80;) {
+        	// Arbustos con bayas rojas
+        	Random random = new Random();
+        	int randomNumber = random.nextInt(100);
+            g.setColor(new Color(0, 128, 0)); // Verde oscuro
+            g.fillOval(100+i, 330, 30, 30);
+            g.setColor(Color.RED);
+            g.fillOval(120+random.nextInt(60), 330+random.nextInt(10), 10, 10);
+            i=i+20;
+        }
+        // TIERRA
+        g.setColor(Color.decode("#CF9E5F")); // Cafe 
+        g.fillRect(0, getHeight() - 100, getWidth(), 150);
+
+        // PASTO
+        for (int i = 0; i < 550;) {
+        	int[] xPoints = {-50+i, 0+i, 50+i};
+            int[] yPoints = {350, 400,350};
+            g.setColor(Color.decode("#0FC714")); // Verde claro
+            g.fillPolygon(xPoints, yPoints, 3);
+            i=i+50;
+        }
+
+        // Bloques amarillos con ojos negros
+        g.setColor(Color.YELLOW);
+        g.fillRect(200, 200, 50, 50);
+        g.setColor(Color.BLACK);
+        g.fillRect(210, 210, 8, 20);
+        g.fillRect(230, 210, 8, 20);
+
+        // Nubes blancas
+        g.setColor(Color.WHITE);
+        g.fillOval(50, 50, 60, 40);
+        g.fillOval(300, 100, 80, 60);
     }
 }
