@@ -1,8 +1,13 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
 import javax.swing.*;
 
 public class Ventana extends JFrame {
@@ -110,10 +116,102 @@ public class Ventana extends JFrame {
 		login.add(askAcount);
 		
 		JButton singIn = new JButton("ENTRAR");
-		singIn.setForeground(Color.black);
+				singIn.setForeground(Color.black);
 		singIn.setFont(new Font("Agency FB", Font.BOLD,30));
 		singIn.setBackground(Color.decode("#FFDF6D"));
 		singIn.setBounds(120, 300, 120, 45);
+		
+		singIn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				Component[] test =  login.getComponents();
+				Component[] test2 = registro.getComponents();
+				
+				for (int i = 0; i < test.length; i++) {
+					
+					if(test[i].getClass().toString().equals("class javax.swing.JTextField")) {
+						JTextField t = (JTextField) test[i];
+						if(t.getText().length()<=0) {
+							t.setBorder(new LineBorder(Color.red,4));
+							
+						}else {
+							t.setBorder(new LineBorder(Color.GREEN,4));
+						}
+						
+						//JTextField t = (JTextField) test[i];
+						//t.setBorder(new LineBorder(Color.red,4));
+					}
+					if(test[i].getClass().toString().equals("class javax.swing.JPasswordField")) {
+						JPasswordField t = (JPasswordField) test[i];
+						String contra = new String(t.getPassword());
+						
+						if(contra.length()<=0) {
+							t.setBorder(new LineBorder(Color.red,4));
+							
+						}else {
+							t.setBorder(new LineBorder(Color.GREEN,4));
+						}
+					}
+					System.out.println(test[i].getClass().toString());
+					
+					
+				}
+				for (int i = 0; i < test2.length; i++) {
+					if(test2[i].getClass().toString().equals("class javax.swing.JCheckBox")) {
+						JCheckBox t = (JCheckBox) test2[i];
+						//String check = new String(check.getPassword());
+						
+						if(t.isSelected()==false) {
+							t.setBorderPainted(true);
+							t.setBorder(new LineBorder(Color.red,4));
+							
+						}else {
+							t.setBorderPainted(true);
+							t.setBorder(new LineBorder(Color.GREEN,4));
+						}
+					}
+					
+					if(test2[i].getClass().toString().equals("class javax.swing.JTextField")) {
+						JTextField t = (JTextField) test2[i];
+						if(t.getText().length()<=0) {
+							t.setBorder(new LineBorder(Color.red,4));
+							
+						}else {
+							t.setBorder(new LineBorder(Color.GREEN,4));
+						}
+					}
+					if(test2[i].getClass().toString().equals("class javax.swing.JTextArea")) {
+						JTextArea t = (JTextArea) test2[i];
+						if(t.getText().length()<=0) {
+							t.setBorder(new LineBorder(Color.red,4));
+							
+						}else {
+							t.setBorder(new LineBorder(Color.GREEN,4));
+						}
+					}
+					
+					System.out.println(test2[i].getClass().toString());
+					System.out.println("helado");
+					
+				}
+				
+				
+			}});
+		
+		
+		singIn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("hola");
+			}
+		});
+			
+		
+		
+		
 		login.add(singIn);
 		
 		JButton singUp = new JButton("ASIGNAR");
@@ -140,8 +238,14 @@ public class Ventana extends JFrame {
 		etiquetaDeTexto(dato = "SISTEMA P.A.C.S.", 90, 30, 200, 30, login);
         etiquetaDeTexto(dato = "Token", 140, 100, 200, 30, login);
         etiquetaDeTexto(dato = "Contraseña", 110, 200, 200, 30, login);
+        
+        
+        
         cajaDeTexto(dato = "Ingrese su token...", 80, 150, 200, 30, login);
         cajaDeContrasena(80, 250, 200, 30, login);
+        
+        //System.out.println(cajaDeTexto.getText());
+        
 		
 		JLabel etiqueta = new JLabel(" ");
 		etiqueta.setBounds(230, 10, this.getWidth(), 30);
