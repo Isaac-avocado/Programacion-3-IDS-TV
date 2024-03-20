@@ -17,19 +17,29 @@ public class VentanaConBoton extends JFrame {
         botonInicial.setBorder(BorderFactory.createRaisedSoftBevelBorder()); 
         botonInicial.setBorderPainted(true);
         botonInicial.addActionListener(e -> {
-            JButton nuevoBoton = new JButton(Integer.toHexString((int)(Math.random() * 16777215)));
-            nuevoBoton.setBounds((int)(Math.random() * 400) + 50, (int)(Math.random() * 300), 100, 30);
-            nuevoBoton.setBackground(new Color((int)(Math.random() * 256), (int)(Math.random() * 256), (int)(Math.random() * 256)));
-            nuevoBoton.setBorder(BorderFactory.createRaisedSoftBevelBorder()); 
-            nuevoBoton.setBorderPainted(true);
-            nuevoBoton.addActionListener(evt -> JOptionPane.showMessageDialog(this, "Color del botón: " + nuevoBoton.getText()));
-            panel.add(nuevoBoton);
-            panel.repaint();
+            agregarNuevoBoton((int)(Math.random() * 400) + 50, (int)(Math.random() * 300));
+        });
+
+        panel.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                agregarNuevoBoton(e.getX(), e.getY());
+            }
         });
 
         panel.add(botonInicial);
         setSize(500, 400);
         setVisible(true);
+    }
+
+    private void agregarNuevoBoton(int x, int y) {
+        JButton nuevoBoton = new JButton(Integer.toHexString((int)(Math.random() * 16777215)));
+        nuevoBoton.setBounds(x, y, 100, 30);
+        nuevoBoton.setBackground(new Color((int)(Math.random() * 256), (int)(Math.random() * 256), (int)(Math.random() * 256)));
+        nuevoBoton.setBorder(BorderFactory.createRaisedSoftBevelBorder()); 
+        nuevoBoton.setBorderPainted(true);
+        nuevoBoton.addActionListener(evt -> JOptionPane.showMessageDialog(this, "Color del botón: " + nuevoBoton.getText()));
+        panel.add(nuevoBoton);
+        panel.repaint();
     }
 
     public static void main(String[] args) {
