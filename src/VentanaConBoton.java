@@ -37,7 +37,13 @@ public class VentanaConBoton extends JFrame {
         nuevoBoton.setBackground(new Color((int)(Math.random() * 256), (int)(Math.random() * 256), (int)(Math.random() * 256)));
         nuevoBoton.setBorder(BorderFactory.createRaisedSoftBevelBorder()); 
         nuevoBoton.setBorderPainted(true);
-        nuevoBoton.addActionListener(evt -> JOptionPane.showMessageDialog(this, "Color del botón: " + nuevoBoton.getText()));
+        nuevoBoton.addActionListener(evt -> {
+            if (evt.getSource() != null && evt.getSource() instanceof JButton) {
+                JButton boton = (JButton) evt.getSource();
+                panel.remove(boton);
+                panel.repaint();
+            }
+        });
         panel.add(nuevoBoton);
         panel.repaint();
     }
