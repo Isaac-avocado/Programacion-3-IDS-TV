@@ -33,7 +33,7 @@ public class VentanaConBoton extends JFrame {
 
     private void agregarNuevoBoton(int x, int y) {
         JButton nuevoBoton = new JButton(Integer.toHexString((int)(Math.random() * 16777215)));
-        nuevoBoton.setBounds(x, y, 100, 30);
+        nuevoBoton.setBounds(x, y, (int)(Math.random() * 100)+30, (int)(Math.random() * 100)+10);
         nuevoBoton.setBackground(new Color((int)(Math.random() * 256), (int)(Math.random() * 256), (int)(Math.random() * 256)));
         nuevoBoton.setBorder(BorderFactory.createRaisedSoftBevelBorder()); 
         nuevoBoton.setBorderPainted(true);
