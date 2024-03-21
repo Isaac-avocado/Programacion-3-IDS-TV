@@ -5,7 +5,8 @@ public class Main {
 		// TODO Auto-generated method stub
 		//Ventana ventana = new Ventana ();
 		//VentanaDibujo ventanaDibujo = new VentanaDibujo ();
-		VentanaConBoton ventanaConBoton = new VentanaConBoton();
+		//VentanaConBoton ventanaConBoton = new VentanaConBoton();
+		VentanaMemorama ventanaMemorama = new VentanaMemorama();
 	}
 
 }

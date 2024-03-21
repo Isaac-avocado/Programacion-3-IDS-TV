@@ -14,4 +14,11 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src/Galaxy_dingbats-Regular.ttf</name>
+			<type>1</type>
+			<locationURI>PROJECT_LOC/Galaxy_dingbats-Regular.ttf</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>
