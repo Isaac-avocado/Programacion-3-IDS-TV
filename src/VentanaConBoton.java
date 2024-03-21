@@ -29,6 +29,22 @@ public class VentanaConBoton extends JFrame {
         panel.add(botonInicial);
         setSize(500, 400);
         setVisible(true);
+        
+        addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_W) {
+                    Component[] componentes = panel.getComponents();
+                    for (Component comp : componentes) {
+                        if (comp instanceof JButton) {
+                            JButton boton = (JButton) comp;
+                            boton.setSize(boton.getWidth() + 10, boton.getHeight() + 10);
+                        }
+                    }
+                }
+            }
+        });
+        
+        setFocusable(true);
     }
 
     private void agregarNuevoBoton(int x, int y) {
