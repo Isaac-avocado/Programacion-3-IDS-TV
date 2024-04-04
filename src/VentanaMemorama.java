@@ -35,7 +35,7 @@ public class VentanaMemorama extends JFrame {
     }
     
     private void inicializarCartas() {
-        char[] simbolos = {'A', 'B', 'C', 'D'}; 
+        char[] simbolos = {'0', 's', 'l', '9'}; 
         ArrayList<BotonCarta> cartas = new ArrayList<>();
         
         for (char simbolo : simbolos) {
@@ -91,7 +91,7 @@ public class VentanaMemorama extends JFrame {
                     JOptionPane.showMessageDialog(this, "¡Felicidades! Has ganado en " + jugadas + " jugadas.");
                 }
             } else {
-                timer = new Timer(3000, e -> {
+                timer = new Timer(1000, e -> {
                     carta1.voltear();
                     carta2.voltear();
                     carta1 = null;
