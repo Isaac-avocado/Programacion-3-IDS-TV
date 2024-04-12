@@ -145,7 +145,12 @@ public class Login {
 	private void error() {
             JOptionPane.showMessageDialog(null, "ERROR1; error al querer acceder");
 
-        }   
+        }
+
+	public static void add(JButton botoncuenta) {
+		// TODO Auto-generated method stub
+		
+	}   
 	
 }
 

@@ -1,32 +1,31 @@
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
 import java.awt.BorderLayout;
-import javax.swing.JToolBar;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
+import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
-import javax.swing.JSeparator;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JSeparator;
+import javax.swing.JTextField;
+import javax.swing.JToolBar;
+import javax.swing.SwingConstants;
 
-public class Registro {
+public class LOGIN_REGISTRO {
 
-	private JFrame frame;
+	private static JFrame frame;
 	private JTextField textFieldNombre;
 	private JTextField textFieldApellido;
-	private JTextField pwfContrasena;
+	//private JTextField pwfContrasena;
 	private JTextField pwfConFContrasena;
 	private JTextField textFieldCorreoE;
-
+	private JTextField txtfNombre;
+	private JPasswordField pwfContrasena;
 	/**
 	 * Launch the application.
 	 */
@@ -34,8 +33,10 @@ public class Registro {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Registro window = new Registro();
+					LOGIN_REGISTRO window = new LOGIN_REGISTRO();
+					//frame = new JFrame();
 					window.frame.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -46,15 +47,20 @@ public class Registro {
 	/**
 	 * Create the application.
 	 */
-	public Registro() {
-		initialize();
+	public LOGIN_REGISTRO() {
+		frame = new JFrame();
+		//login();
+		registro();
+		
+		System.out.println("Hola");
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	void initialize() {
-		frame = new JFrame();
+	void registro() {
+
+		//frame = new JFrame();
 		frame.setBounds(100, 100, 1039, 693);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
@@ -66,10 +72,27 @@ public class Registro {
 		JButton btnInicio = new JButton("Inicio");
 		toolBar.add(btnInicio);
 		
-		JButton btnLogin = new JButton("Login");
-		toolBar.add(btnLogin);
+		JPanel pnlRegistro = new JPanel();
+		pnlRegistro.setLayout(null);
+		frame.getContentPane().add(pnlRegistro);
 		
+		JButton btnLogin = new JButton("Login");
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				frame.getContentPane().remove(pnlRegistro);
+				System.out.println("Hola");
+				login();
+				frame.getContentPane().repaint();
+				frame.getContentPane().revalidate();
+			}
+		});
+		toolBar.add(btnLogin);
 		JButton btnRegistro = new JButton("Registro");
+		btnRegistro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		toolBar.add(btnRegistro);
 		
 		//JButton btnRegistro = new JButton("Registro");
@@ -83,9 +106,7 @@ public class Registro {
 		btnAyuda.setEnabled(false);
 		toolBar.add(btnAyuda);
 		
-		JPanel pnlRegistro = new JPanel();
-		pnlRegistro.setLayout(null);
-		frame.getContentPane().add(pnlRegistro);
+		
 		
 		JButton btnTerminosyCondiciones = new JButton("términos y condiciones");
 		btnTerminosyCondiciones.setFont(new Font("Tw Cen MT", Font.BOLD, 11));
@@ -187,13 +208,131 @@ public class Registro {
                     JOptionPane.showMessageDialog(frame, "Debe aceptar los términos y condiciones", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }else { 
-                	JOptionPane.showMessageDialog(frame, "¡Registro exitoso!", "Éxito", JOptionPane.INFORMATION_MESSAGE);}
+                	JOptionPane.showMessageDialog(frame, "¡Registro exitoso!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                	frame.getContentPane().remove(pnlRegistro);
+    				
+    				login();
+    				frame.getContentPane().repaint();
+    				frame.getContentPane().revalidate();
+    				}
             }
         });
         btnRegistrarse.setBounds(346, 540, 300, 80);
         pnlRegistro.add(btnRegistrarse);        
         
 	}
+	private void login() {
+		//frame = new JFrame();
+		frame.setBounds(100, 100, 1039, 693);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(new BorderLayout(0, 0));
+		
+		JToolBar toolBar = new JToolBar();
+		toolBar.setFloatable(false);
+		frame.getContentPane().add(toolBar, BorderLayout.NORTH);
+		
+		JButton btnInicio = new JButton("Inicio");
+		btnInicio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		toolBar.add(btnInicio);
+		
+		JButton btnLogin = new JButton("Login");
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Hola desde el panel login");
+			}
+		});
+		toolBar.add(btnLogin);
+		JPanel pnlLogin = new JPanel();
+		frame.getContentPane().add(pnlLogin, BorderLayout.CENTER);
+		pnlLogin.setLayout(null);
+		
+		JButton btnRegistro = new JButton("Registro");
+		btnRegistro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.getContentPane().remove(pnlLogin);
+				
+				registro();
+				frame.getContentPane().repaint();
+				frame.getContentPane().revalidate();
+			}
+		});
+		toolBar.add(btnRegistro);
+		
+		JButton btnCarga = new JButton("Carga");
+		btnCarga.setEnabled(false);
+		toolBar.add(btnCarga);
+		
+		JButton btnAyuda = new JButton("Ayuda");
+		btnAyuda.setEnabled(false);
+		toolBar.add(btnAyuda);
+		
+		
+		
+		JLabel lblIniciarSesion = new JLabel("Iniciar sesion");
+		lblIniciarSesion.setBounds(210, 11, 569, 175);
+		pnlLogin.add(lblIniciarSesion);
+		lblIniciarSesion.setFont(new Font("Tw Cen MT", Font.BOLD, 60));
+		lblIniciarSesion.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		JLabel lblNombre = new JLabel("Ingrese el nombre de usuario");
+		lblNombre.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNombre.setFont(new Font("Tw Cen MT", Font.PLAIN, 30));
+		lblNombre.setBounds(271, 197, 450, 33);
+		pnlLogin.add(lblNombre);
+		
+		txtfNombre = new JTextField();
+		txtfNombre.setBounds(320, 241, 354, 41);
+		pnlLogin.add(txtfNombre);
+		txtfNombre.setColumns(10);
+		
+		JLabel lblContrasena = new JLabel("Ingrese su contraseña");
+		lblContrasena.setHorizontalAlignment(SwingConstants.CENTER);
+		lblContrasena.setFont(new Font("Tw Cen MT", Font.PLAIN, 30));
+		lblContrasena.setBounds(271, 314, 450, 33);
+		pnlLogin.add(lblContrasena);
+		
+		pwfContrasena = new JPasswordField();
+		pwfContrasena.setBounds(320, 358, 354, 41);
+		pnlLogin.add(pwfContrasena);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(320, 301, 354, 2);
+		pnlLogin.add(separator);
+		
+		JButton btnLoginMenu = new JButton("Login");
+		btnLoginMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				error();
+			}
+		});
+		btnLoginMenu.setFont(new Font("Tw Cen MT", Font.BOLD, 50));
+		btnLoginMenu.setBounds(399, 450, 203, 80);
+
+		pnlLogin.add(btnLoginMenu);
+		
+		JButton btnNewButton = new JButton("Registrar nuevo usuario");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//registro();
+				frame.getContentPane().remove(pnlLogin);
+				
+				registro();
+				frame.getContentPane().repaint();
+				frame.getContentPane().revalidate();
+
+			}
+		});
+		btnNewButton.setFont(new Font("Tw Cen MT", Font.PLAIN, 10));
+		btnNewButton.setBounds(432, 540, 138, 21);
+		pnlLogin.add(btnNewButton);
+	}
+	private void error() {
+            JOptionPane.showMessageDialog(null, "ERROR1; error al querer acceder");
+
+        } 
 	private void terminosycondiciones() {
         JOptionPane.showMessageDialog(null, "Términos y Condiciones para la Venta del Alma al Diablo\r\n"
         		+ "\r\n"
@@ -223,5 +362,7 @@ public class Registro {
         		+ "    Aceptación:\r\n"
         		+ "        Al aceptar estos términos y condiciones, la Parte A reconoce que ha leído y comprendido completamente el contenido de este contrato y está de acuerdo con todas sus disposiciones.");
 
-    } 
+    }
 }
+
+
