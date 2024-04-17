@@ -47,11 +47,16 @@ public class LOGIN_REGISTRO {
 	/**
 	 * Create the application.
 	 */
+	// MODIFICAR AQUI PARA PODER UTILIZARLO EN EL DESING
 	public LOGIN_REGISTRO() {
 		frame = new JFrame();
-		//login();
-		registro();
-		
+		login();
+		//registro();
+		//recuperacion();
+		//comocrearunusuario();
+		//comoaccederalsistema();
+		//quepasasiolvidemicontraseña();
+		//
 		System.out.println("Hola");
 	}
 
@@ -183,10 +188,10 @@ public class LOGIN_REGISTRO {
 		textFieldCorreoE.setBounds(320, 358, 354, 41);
 		pnlRegistro.add(textFieldCorreoE);
 		
-		JCheckBox chckbxTerminosyCondiciones = new JCheckBox("Acepto los                                                 , vendo mi alma al diablo.");
+		JCheckBox chckbxTerminosyCondiciones = new JCheckBox("Acepto los");
         chckbxTerminosyCondiciones.setFont(new Font("Tw Cen MT", Font.PLAIN, 11));
-        chckbxTerminosyCondiciones.setHorizontalAlignment(SwingConstants.CENTER);
-        chckbxTerminosyCondiciones.setBounds(209, 500, 570, 23);
+        chckbxTerminosyCondiciones.setHorizontalAlignment(SwingConstants.LEFT);
+        chckbxTerminosyCondiciones.setBounds(320, 500, 73, 23);
         pnlRegistro.add(chckbxTerminosyCondiciones);
 		
         JButton btnRegistrarse = new JButton("Registrarse");
@@ -219,6 +224,10 @@ public class LOGIN_REGISTRO {
         });
         btnRegistrarse.setBounds(346, 540, 300, 80);
         pnlRegistro.add(btnRegistrarse);        
+        
+        JLabel lblCheckBoxTYC = new JLabel(", vendo mi alma al diablo.");
+        lblCheckBoxTYC.setBounds(547, 504, 127, 14);
+        pnlRegistro.add(lblCheckBoxTYC);
         
 	}
 	private void login() {
@@ -328,6 +337,241 @@ public class LOGIN_REGISTRO {
 		btnNewButton.setFont(new Font("Tw Cen MT", Font.PLAIN, 10));
 		btnNewButton.setBounds(432, 540, 138, 21);
 		pnlLogin.add(btnNewButton);
+	}
+	// VENTANAS QUE AUN NO ESTAN LIGADAS A LOS MENUS SUPERIORES
+	private void recuperacion() {
+		//frame = new JFrame();
+		frame.setBounds(100, 100, 1039, 693);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(new BorderLayout(0, 0));
+		
+		JPanel pnlRecuperacion = new JPanel();
+		frame.getContentPane().add(pnlRecuperacion, BorderLayout.CENTER);
+		pnlRecuperacion.setLayout(null);
+		
+		JToolBar toolBar = new JToolBar();
+		toolBar.setFloatable(false);
+		frame.getContentPane().add(toolBar, BorderLayout.NORTH);
+		
+		JButton btnInicio = new JButton("Inicio");
+		btnInicio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		toolBar.add(btnInicio);
+		
+		JButton btnLogin = new JButton("Login");
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				frame.getContentPane().remove(pnlRecuperacion);
+				System.out.println("Hola");
+				login();
+				frame.getContentPane().repaint();
+				frame.getContentPane().revalidate();
+			}
+		});
+		toolBar.add(btnLogin);
+		
+		
+		JButton btnRegistro = new JButton("Registro");
+		btnRegistro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.getContentPane().remove(pnlRecuperacion);
+				
+				registro();
+				frame.getContentPane().repaint();
+				frame.getContentPane().revalidate();
+			}
+		});
+		toolBar.add(btnRegistro);
+		
+		JButton btnCarga = new JButton("Carga");
+		btnCarga.setEnabled(false);
+		toolBar.add(btnCarga);
+		
+		JButton btnAyuda = new JButton("Ayuda");
+		btnAyuda.setEnabled(false);
+		toolBar.add(btnAyuda);
+		
+		JLabel lblRecuperacion = new JLabel("lblRecuperacion");
+		lblRecuperacion.setHorizontalAlignment(SwingConstants.CENTER);
+		lblRecuperacion.setFont(new Font("Tw Cen MT", Font.BOLD, 60));
+		lblRecuperacion.setBounds(210, 11, 569, 175);
+		lblRecuperacion.add(lblRecuperacion);
+	}
+	private void comocrearunusuario() {
+		//frame = new JFrame();
+		frame.setBounds(100, 100, 1039, 693);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(new BorderLayout(0, 0));
+		JPanel pnlComoCrearUnUsuario = new JPanel();
+		frame.getContentPane().add(pnlComoCrearUnUsuario, BorderLayout.CENTER);
+		pnlComoCrearUnUsuario.setLayout(null);
+		
+		JToolBar toolBar = new JToolBar();
+		toolBar.setFloatable(false);
+		frame.getContentPane().add(toolBar, BorderLayout.NORTH);
+		
+		JButton btnInicio = new JButton("Inicio");
+		btnInicio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		toolBar.add(btnInicio);
+		
+		JButton btnLogin = new JButton("Login");
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				frame.getContentPane().remove(pnlComoCrearUnUsuario);
+				System.out.println("Hola");
+				login();
+				frame.getContentPane().repaint();
+				frame.getContentPane().revalidate();
+			}
+		});
+		toolBar.add(btnLogin);
+		
+		
+		JButton btnRegistro = new JButton("Registro");
+		btnRegistro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.getContentPane().remove(pnlComoCrearUnUsuario);
+				
+				registro();
+				frame.getContentPane().repaint();
+				frame.getContentPane().revalidate();
+			}
+		});
+		toolBar.add(btnRegistro);
+		
+		JButton btnCarga = new JButton("Carga");
+		btnCarga.setEnabled(false);
+		toolBar.add(btnCarga);
+		
+		JButton btnAyuda = new JButton("Ayuda");
+		btnAyuda.setEnabled(false);
+		toolBar.add(btnAyuda);
+	}
+	private void comoaccederalsistema() {
+		//frame = new JFrame();
+		frame.setBounds(100, 100, 1039, 693);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(new BorderLayout(0, 0));
+		
+		JPanel pnlComoAccederAlSistema = new JPanel();
+		frame.getContentPane().add(pnlComoAccederAlSistema, BorderLayout.CENTER);
+		pnlComoAccederAlSistema.setLayout(null);
+		
+		JToolBar toolBar = new JToolBar();
+		toolBar.setFloatable(false);
+		frame.getContentPane().add(toolBar, BorderLayout.NORTH);
+		
+		JButton btnInicio = new JButton("Inicio");
+		btnInicio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		toolBar.add(btnInicio);
+		
+		JButton btnLogin = new JButton("Login");
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				frame.getContentPane().remove(pnlComoAccederAlSistema);
+				System.out.println("Hola");
+				login();
+				frame.getContentPane().repaint();
+				frame.getContentPane().revalidate();
+			}
+		});
+		toolBar.add(btnLogin);
+		
+		JButton btnRegistro = new JButton("Registro");
+		btnRegistro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.getContentPane().remove(pnlComoAccederAlSistema);
+				
+				registro();
+				frame.getContentPane().repaint();
+				frame.getContentPane().revalidate();
+			}
+		});
+		toolBar.add(btnRegistro);
+		
+		JButton btnCarga = new JButton("Carga");
+		btnCarga.setEnabled(false);
+		toolBar.add(btnCarga);
+		
+		JButton btnAyuda = new JButton("Ayuda");
+		btnAyuda.setEnabled(false);
+		toolBar.add(btnAyuda);
+		
+		JLabel lblComoAccederAlSistema = new JLabel("lblComoAccederAlSistema");
+		lblComoAccederAlSistema.setHorizontalAlignment(SwingConstants.CENTER);
+		lblComoAccederAlSistema.setFont(new Font("Tw Cen MT", Font.BOLD, 60));
+		lblComoAccederAlSistema.setBounds(210, 11, 569, 175);
+		lblComoAccederAlSistema.add(pnlComoAccederAlSistema);
+	}
+	private void quepasasiolvidemicontrasena() {
+		//frame = new JFrame();
+		frame.setBounds(100, 100, 1039, 693);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(new BorderLayout(0, 0));
+		JPanel pnlQuePasaSiOlvideMiContrasena = new JPanel();
+		frame.getContentPane().add(pnlQuePasaSiOlvideMiContrasena, BorderLayout.CENTER);
+		pnlQuePasaSiOlvideMiContrasena.setLayout(null);
+		JToolBar toolBar = new JToolBar();
+		toolBar.setFloatable(false);
+		frame.getContentPane().add(toolBar, BorderLayout.NORTH);
+		
+		JButton btnInicio = new JButton("Inicio");
+		btnInicio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.getContentPane().remove(pnlQuePasaSiOlvideMiContrasena);
+				
+				login();
+				frame.getContentPane().repaint();
+				frame.getContentPane().revalidate();
+			}
+		});
+		toolBar.add(btnInicio);
+		
+		JButton btnLogin = new JButton("Login");
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Hola desde el panel login");
+			}
+		});
+		toolBar.add(btnLogin);
+		
+		
+		JButton btnRegistro = new JButton("Registro");
+		btnRegistro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.getContentPane().remove(pnlQuePasaSiOlvideMiContrasena);
+				
+				registro();
+				frame.getContentPane().repaint();
+				frame.getContentPane().revalidate();
+			}
+		});
+		toolBar.add(btnRegistro);
+		
+		JButton btnCarga = new JButton("Carga");
+		btnCarga.setEnabled(false);
+		toolBar.add(btnCarga);
+		
+		JButton btnAyuda = new JButton("Ayuda");
+		btnAyuda.setEnabled(false);
+		toolBar.add(btnAyuda);
+		
+		JLabel lblQuePasaSiOlvideMiContrasena = new JLabel("lblQuePasaSiOlvideMiContrasena");
+		lblQuePasaSiOlvideMiContrasena.setHorizontalAlignment(SwingConstants.CENTER);
+		lblQuePasaSiOlvideMiContrasena.setFont(new Font("Tw Cen MT", Font.BOLD, 60));
+		lblQuePasaSiOlvideMiContrasena.setBounds(210, 11, 569, 175);
+		lblQuePasaSiOlvideMiContrasena.add(pnlQuePasaSiOlvideMiContrasena);
 	}
 	private void error() {
             JOptionPane.showMessageDialog(null, "ERROR1; error al querer acceder");
