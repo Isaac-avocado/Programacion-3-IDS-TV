@@ -67,22 +67,30 @@ public class PacMan extends Canvas {
         progressBar.setForeground(Color.GREEN);
         progressBar.setBackground(Color.WHITE);
         progressBar.setValue(0);
-
-        JButton btnNewButton = new JButton("Reiniciar");
-        btnNewButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                progressBar.setValue(progressBar.getValue() + 1);
-            }
-        });
-        btnNewButton.setFont(new Font("Simplex_IV50", Font.BOLD, 30));
-        toolBar.add(btnNewButton);
-
-        toolBar.add(progressBar);
         
         JProgressBar progressBar_1 = new JProgressBar();
         progressBar_1.setForeground(Color.RED);
         progressBar_1.setBackground(Color.WHITE);
         toolBar.add(progressBar_1);
+        
+        JButton btnNewButton = new JButton("Reiniciar");
+        btnNewButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                progressBar.setValue(0);
+                progressBar_1.setValue(0);
+                x = 250; y = 210;
+                PacMan.this.revalidate();
+                PacMan.this.repaint();
+                PacMan.this.update(getGraphics());
+                JOptionPane.showMessageDialog(null,"                 JUEGO REINICIADO\r\n"
+                		                         + "Acepte y pulse la ventana para seguir jugando\r\n");
+            }
+        });
+        btnNewButton.setFont(new Font("Simplex_IV50", Font.BOLD, 30));
+        toolBar.add(btnNewButton);
+        toolBar.add(progressBar);
+        
+        
         
 
         frame.getContentPane().setBackground(Color.DARK_GRAY); 
