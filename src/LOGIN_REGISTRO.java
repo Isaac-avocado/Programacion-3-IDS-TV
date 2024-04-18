@@ -50,6 +50,7 @@ public class LOGIN_REGISTRO {
 	// MODIFICAR AQUI PARA PODER UTILIZARLO EN EL DESING
 	public LOGIN_REGISTRO() {
 		frame = new JFrame();
+		//
 		login();
 		//registro();
 		//recuperacion();
