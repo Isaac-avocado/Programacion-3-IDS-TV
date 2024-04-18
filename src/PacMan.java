@@ -5,7 +5,7 @@ import javax.swing.*;
 public class PacMan extends Canvas {
 
     private JFrame frame;
-    private int x = 240, y = 210, a = 100, l = 100;
+    private int x = 250, y = 210, a = 20, l = 20;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -21,6 +21,7 @@ public class PacMan extends Canvas {
     }
 
     public PacMan() {
+    	setBackground(Color.BLACK);
     	setBounds(0, 0, 584, 520);
         initialize();
     }
@@ -30,6 +31,30 @@ public class PacMan extends Canvas {
         frame.setBounds(600, 600, 600, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
+        
+        JButton button_1_1_1 = new JButton("");
+        button_1_1_1.setForeground(Color.YELLOW);
+        button_1_1_1.setBackground(Color.BLUE);
+        button_1_1_1.setBounds(10, 485, 564, 24);
+        frame.getContentPane().add(button_1_1_1);
+        
+        JButton button_1_1 = new JButton("");
+        button_1_1.setForeground(Color.YELLOW);
+        button_1_1.setBackground(Color.BLUE);
+        button_1_1.setBounds(10, 11, 564, 24);
+        frame.getContentPane().add(button_1_1);
+        
+        JButton button_1 = new JButton("");
+        button_1.setForeground(Color.YELLOW);
+        button_1.setBackground(Color.BLUE);
+        button_1.setBounds(10, 11, 23, 498);
+        frame.getContentPane().add(button_1);
+        
+        JButton button = new JButton("");
+        button.setForeground(Color.YELLOW);
+        button.setBackground(Color.BLUE);
+        button.setBounds(551, 11, 23, 498);
+        frame.getContentPane().add(button);
         
         JToolBar toolBar = new JToolBar();
         toolBar.setBounds(0, 520, 584, 41);
@@ -60,7 +85,7 @@ public class PacMan extends Canvas {
         toolBar.add(progressBar_1);
         
 
-        frame.getContentPane().setBackground(Color.BLACK); 
+        frame.getContentPane().setBackground(Color.DARK_GRAY); 
         frame.getContentPane().add(this); 
 
         this.addKeyListener(new KeyAdapter() {
@@ -72,20 +97,28 @@ public class PacMan extends Canvas {
                 	progressBar_1.setValue(progressBar_1.getValue() + 20);
                 }
                 if (key == KeyEvent.VK_A) {
-                    moveLeft();
-                    progressBar.setValue(progressBar.getValue() + 1);
+                	if(x != 50 ) {
+                		moveLeft();
+                		progressBar.setValue(progressBar.getValue() + 1);
+                	}
                 }
                 if (key == KeyEvent.VK_D) { 
-                    moveRight();
-                    progressBar.setValue(progressBar.getValue() + 1);
+                	if(x != 510 ) {
+                		moveRight();
+                        progressBar.setValue(progressBar.getValue() + 1);
+                	}    
                 }
                 if (key == KeyEvent.VK_W) { 
-                    moveUp();
-                    progressBar.setValue(progressBar.getValue() + 1);
+                	if(y != 50 ) {
+                		moveUp();
+                        progressBar.setValue(progressBar.getValue() + 1);
+                	}
                 }
                 if (key == KeyEvent.VK_S) { 
-                    moveDown();
-                    progressBar.setValue(progressBar.getValue() + 1);
+                	if(y != 450 ) {
+                		moveDown();
+                        progressBar.setValue(progressBar.getValue() + 1);
+                	}
                 }
             }
         });
@@ -103,31 +136,35 @@ public class PacMan extends Canvas {
         //g.setColor(Color.YELLOW);
         //g.drawOval(x, y, 300, 300);
         g.setColor(Color.YELLOW);
-        g.fillOval(x, y, 100, 100);
+        g.fillOval(x, y, 20, 20);
     }
     private void moveLeft() {
-    	System.out.println("Izquierda");
-    	paint(getGraphics(), x = x-10, y);
+    	paint(getGraphics(), x = x-20, y);
+    	System.out.println("\nX = ");
     	System.out.print(x);
+    	System.out.println("\nY = ");
     	System.out.print(y);
     }
     private void moveRight() {
-    	System.out.println("Derecha");
-    	paint(getGraphics(), x = x+10, y);
+    	paint(getGraphics(), x = x+20, y);
+    	System.out.println("\nX = ");
     	System.out.print(x);
+    	System.out.println("\nY = ");
     	System.out.print(y);
     }
     private void moveUp() {
-    	System.out.println("Arriba");
-    	paint(getGraphics(), x, y = y-10);
+    	paint(getGraphics(), x, y = y-20);
+    	System.out.println("\nX = ");
     	System.out.print(x);
+    	System.out.println("\nY = ");
     	System.out.print(y);
     	
     }
     private void moveDown() {
-    	System.out.println("Abajo");
-    	paint(getGraphics(), x, y = y+10);
+    	paint(getGraphics(), x, y = y+20);
+    	System.out.println("\nX = ");
     	System.out.print(x);
+    	System.out.println("\nY = ");
     	System.out.print(y);
     }
 }
