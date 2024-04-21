@@ -22,21 +22,21 @@ public class PacMan extends Canvas {
 
     public PacMan() {
     	setBackground(Color.BLACK);
-    	setBounds(0, 0, 584, 520);
+    	setBounds(0, 0, 600, 600);
         initialize();
     }
 
     private void initialize() {
         frame = new JFrame();
-        frame.setBounds(600, 600, 600, 600);
+        frame.setBounds(600, 600, 616, 680);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
         
-        JButton button_1_1_1 = new JButton("");
-        button_1_1_1.setForeground(Color.YELLOW);
-        button_1_1_1.setBackground(Color.BLUE);
-        button_1_1_1.setBounds(10, 485, 564, 24);
-        frame.getContentPane().add(button_1_1_1);
+        JButton button = new JButton("");
+        button.setForeground(Color.YELLOW);
+        button.setBackground(Color.BLUE);
+        button.setBounds(551, 11, 23, 498);
+        frame.getContentPane().add(button);
         
         JButton button_1_1 = new JButton("");
         button_1_1.setForeground(Color.YELLOW);
@@ -50,14 +50,14 @@ public class PacMan extends Canvas {
         button_1.setBounds(10, 11, 23, 498);
         frame.getContentPane().add(button_1);
         
-        JButton button = new JButton("");
-        button.setForeground(Color.YELLOW);
-        button.setBackground(Color.BLUE);
-        button.setBounds(551, 11, 23, 498);
-        frame.getContentPane().add(button);
+        JButton button_1_1_1 = new JButton("");
+        button_1_1_1.setForeground(Color.YELLOW);
+        button_1_1_1.setBackground(Color.BLUE);
+        button_1_1_1.setBounds(10, 485, 564, 24);
+        frame.getContentPane().add(button_1_1_1);
         
         JToolBar toolBar = new JToolBar();
-        toolBar.setBounds(0, 520, 584, 41);
+        toolBar.setBounds(0, 600, 600, 41);
         toolBar.setFont(new Font("Simplex_IV25", Font.BOLD, 40));
         toolBar.setToolTipText("CONTROLES");
         toolBar.setFloatable(false);
