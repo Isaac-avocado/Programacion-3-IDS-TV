@@ -680,7 +680,6 @@ public class PacMan extends Canvas {
         x = newX;
         System. out. println("HOLA");
     }
-
     private void moveUp() {
         int newY = y - 20;
         if (isCircleInsideButton(x, newY)) {
@@ -691,7 +690,6 @@ public class PacMan extends Canvas {
         y = newY;
         System. out. println("HOLA");
     }
-
     private void moveDown() {
         int newY = y + 20;
         if (isCircleInsideButton(x, newY)) {
